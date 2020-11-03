@@ -4,7 +4,8 @@
 const findInput = document.querySelector(".find-input")
 const replaceInput = document.querySelector(".replace-input")
 const replaceAllButton = document.querySelector(".replace-all-button")
-
+const replaceOneButton = document.querySelector(".replace-one-button")
+let results = document.querySelector("#result")
 // The following variable holds your OUTER ARRAY of row elements.
 // Later you will need an OUTER LOOP to loop over the individual elements within
 // this array.
@@ -21,8 +22,47 @@ function getCellElements (currentRowElement) {
 
 
 // YOUR CODE GOES HERE
+replaceAllButton.addEventListener("click", function() {
+    let findinput = findInput.value
+    let replaceinput = replaceInput.value
+    for (let i = 0; i<rowElements.length; i++){
+        let getcell = getCellElements (rowElements[i])
+        console.log(getcell)
+        for (let n = 0; n < getcell.length; n++){
+            let Element = getcell[n]
+            console.log(Element)
+            if(Element.innerHTML.includes(findinput)){
+                console.log(findinput)
+                console.log(replaceinput)
+                let replacemethod = Element.innerHTML.replace(findinput,replaceinput)
+                Element.innerHTML=replacemethod
+            }
 
+        }
+    }
+})
 
+replaceOneButton.addEventListener("click", function() {
+    let findinput = findInput.value
+    let replaceinput = replaceInput.value
+    for (let i = 0; i<rowElements.length; i++){
+        let getcell = getCellElements (rowElements[i])
+        console.log(getcell)
+        for (let n = 0; n < getcell.length; n++){
+            let Element = getcell[n]
+            console.log(Element)
+            if(Element.innerHTML.includes(findinput)){
+                if (counter<1){
+                console.log(findinput)
+                console.log(replaceinput)
+                let replacemethod = Element.innerHTML.replace(findinput,replaceinput)
+                Element.innerHTML=replacemethod
+                }
+            }
+
+        }
+    }
+})
 // One last thing: dedicate very careful attention to using variables and
 // naming them accurately.
 // And when you change the value you are assigning to a variable, don't
